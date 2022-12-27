@@ -1,0 +1,49 @@
+.layout-body::-webkit-scrollbar,
+.ant-layout-content::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+.ant-modal {
+  top: 50px !important;
+}
+
+table tr th {
+  font-size: 0.9rem !important;
+  text-align: center !important;
+}
+
+.ant-layout::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.box-order::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.ant-table-body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+.unScroll::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.select-option-center,
+.select-option {
+  transition: 0.3s ease-in;
+  border-radius: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.box-show-menu {
+  /* animation: box_show_menu 1s ease-in; */
+  transition: 0.3s ease-in;
+}
+
+

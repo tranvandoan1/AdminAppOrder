@@ -1,7 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import Orders from "./Page/Orders";
-import LayoutWeb from "./Page/LayoutWeb";
 import ListCate from "./Manage/Categoris/ListCate";
 import LayoutAdmin from "./Manage/LayoutAdmin";
 import ListPro from "./Manage/Products/ListPro";
@@ -29,7 +27,7 @@ import Setting from "./Manage/Setting";
 import { getUser } from "./features/User/UserSlice";
 import Notfound from "./components/Notfound";
 import PrivateData from "./CheckRole/privateData";
-import Loading from './components/Loading';
+import Loading from "./components/Loading";
 function App() {
   const userLoca = JSON.parse(localStorage.getItem("user"));
   const user = useSelector((data) => data.user);
@@ -51,7 +49,7 @@ function App() {
     user?.value.nameRestaurant == undefined ||
     user?.value.nameRestaurant == null ||
     String(user?.value.nameRestaurant).length <= 0
-      ? "WebSite Order"
+      ? "Admin App Order"
       : user?.value.nameRestaurant;
   const key = JSON.parse(localStorage.getItem("key"));
   return (
@@ -83,7 +81,10 @@ function App() {
                 ) : user?.value.count == 1 &&
                   tables.value.length > 0 &&
                   tables.checkData == false ? (
-                  <LayoutWeb />
+                  (key == undefined || key == null
+                    ? localStorage.setItem("key", JSON.stringify(["2"]))
+                    : null,
+                  (<Navigate to="/manager/statistical" />))
                 ) : null
               }
             />
@@ -103,23 +104,6 @@ function App() {
               }
             />
 
-            <Route
-              errorElement={<Notfound />}
-              path="/tables/"
-              element={
-                user?.value.accountType == 0 ? (
-                  <Navigate to="/" />
-                ) : (
-                  <LayoutWeb />
-                )
-              }
-            />
-
-            <Route
-              path="/order/:name/:id"
-              element={<Orders />}
-              errorElement={<Notfound />}
-            />
             <Route
               errorElement={<Notfound />}
               path="/manager/"

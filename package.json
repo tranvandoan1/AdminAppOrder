@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "vite --port 2005 --open --mode development",
+    "start": "vite --port 2001 --open --mode development",
     "build": "vite build",
     "preview": "vite preview",
     "start:server": "json-server --watch db.json --port 2300"

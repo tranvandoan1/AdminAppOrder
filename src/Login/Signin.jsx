@@ -22,7 +22,7 @@ const Signin = () => {
         localStorage.setItem("user", JSON.stringify({ _id: data.user._id }));
         localStorage.setItem("token", JSON.stringify(data.token));
         alert("Mời bạn vào trang web");
-        window.location.href = "/";
+        window.location.href = "/manager/table";
       }
       setLoading(false);
     } catch (error) {

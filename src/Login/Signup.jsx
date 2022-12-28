@@ -50,7 +50,7 @@ const Signup = () => {
               password: values.password,
               nameRestaurant: "",
               avatarRestaurant: "",
-              accountType: 0,
+              accountType: 1,
               count: 0,
             };
             await UserAPI.signup(user);
@@ -70,7 +70,7 @@ const Signup = () => {
                   password: values.password,
                   nameRestaurant: "",
                   avatarRestaurant: "",
-                  accountType: 0,
+                  accountType: 1,
                   count: 0,
                 };
                 await UserAPI.signup(user);

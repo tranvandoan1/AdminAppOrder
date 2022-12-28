@@ -16,7 +16,7 @@ const Signin = () => {
     setLoading(true);
     try {
       const { data } = await UserAPI.signin(user);
-      if (data.user.accountType == 1) {
+      if (data.user.accountType == 0) {
         message.warning("Loại tài khoản không tương thích");
       } else {
         localStorage.setItem("user", JSON.stringify({ _id: data.user._id }));
@@ -35,7 +35,7 @@ const Signin = () => {
   return (
     <div className="backgroundd">
       <div className="back">
-        <ul class="background-body">
+        <ul className="background-body">
           <li></li>
           <li></li>
           <li></li>

@@ -38,18 +38,17 @@ function App() {
     dispatch(getAllTable());
   }, []);
   const avatarWeb = document.getElementById("avatarWeb");
-  const nameWeb = document.getElementById("nameWeb");
   avatarWeb.href =
     String(user?.value.avatarRestaurant).length <= 0 ||
     user?.value.avatarRestaurant == null ||
     user?.value.avatarRestaurant == undefined
       ? "https://png.pngtree.com/png-vector/20190805/ourlarge/pngtree-account-avatar-user-abstract-circle-background-flat-color-icon-png-image_1650938.jpg"
       : user?.value.avatarRestaurant;
-  nameWeb.innerHTML =
+  document.title =
     user?.value.nameRestaurant == undefined ||
     user?.value.nameRestaurant == null ||
     String(user?.value.nameRestaurant).length <= 0
-      ? "Admin App Order"
+      ? "WebSite Order"
       : user?.value.nameRestaurant;
   const key = JSON.parse(localStorage.getItem("key"));
   return (

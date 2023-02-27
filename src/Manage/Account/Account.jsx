@@ -34,50 +34,50 @@ const Account = () => {
     setLoading(false);
   };
   const onFinish = async (values) => {
-   if(values.phone==undefined&&values.email==undefined&&values.name==undefined&&photo==undefined){
-    message.warning('Chưa có thay đổi !')
-   }else{
-    message.warning("Đang tiến hành sửa !");
-    const componentSetting = async (image) => {
-      const uploadUser = {
-        name: values.name == undefined ? user.name : values.name,
-        email: values.email == undefined ? user.email : values.email,
-        phone: values.phone == undefined ? user.phone : values.phone,
-        avatar: image !== undefined ? image : user.avatar,
-        _id: user._id,
-      };
-      setLoading(true);
-      await dispatch(editInfoUser(uploadUser));
-
-      setPhoto();
-      setLoading(false);
-      message.success("Sửa thành công");
-    };
-    if (
-      validatePhone(
-        `0${values.phone == undefined ? user.phone : values.phone}`
-      ) == false
-    ) {
-      message.error("Số điện thoại chưa đúng !");
-    } else if (
-      validateEmail(values.email == undefined ? user.email : values.email) ==
-      false
-    ) {
-      message.error("Email chưa đúng !");
+    if (values.phone == undefined && values.email == undefined && values.name == undefined && photo == undefined) {
+      message.warning('Chưa có thay đổi !')
     } else {
-      if (photo == undefined) {
-        componentSetting();
-      } else {
-        const imageRef = ref(storage, `images/${photo.file.name}`);
+      message.warning("Đang tiến hành sửa !");
+      const componentSetting = async (image) => {
+        const uploadUser = {
+          name: values.name == undefined ? user.name : values.name,
+          email: values.email == undefined ? user.email : values.email,
+          phone: values.phone == undefined ? user.phone : values.phone,
+          avatar: image !== undefined ? image : user.avatar,
+          _id: user._id,
+        };
         setLoading(true);
-        uploadBytes(imageRef, photo.file).then(() => {
-          getDownloadURL(imageRef).then(async (url) => {
-            componentSetting(url);
+        await dispatch(editInfoUser(uploadUser));
+
+        setPhoto();
+        setLoading(false);
+        message.success("Sửa thành công");
+      };
+      if (
+        validatePhone(
+          `0${values.phone == undefined ? user.phone : values.phone}`
+        ) == false
+      ) {
+        message.error("Số điện thoại chưa đúng !");
+      } else if (
+        validateEmail(values.email == undefined ? user.email : values.email) ==
+        false
+      ) {
+        message.error("Email chưa đúng !");
+      } else {
+        if (photo == undefined) {
+          componentSetting();
+        } else {
+          const imageRef = ref(storage, `images/${photo.file.name}`);
+          setLoading(true);
+          uploadBytes(imageRef, photo.file).then(() => {
+            getDownloadURL(imageRef).then(async (url) => {
+              componentSetting(url);
+            });
           });
-        });
+        }
       }
     }
-   }
   };
   const removeImage = async () => {
     const uploadUser = {
@@ -261,7 +261,7 @@ const Account = () => {
                       <div>
                         {photo == undefined ? (
                           String(user.avatar).length <= 0 ||
-                          user.avatar == null ? (
+                            user.avatar == null ? (
                             <div>
                               <UserOutlined
                                 style={{ fontSize: 35, padding: 20 }}
@@ -287,7 +287,7 @@ const Account = () => {
               {loading !== true && (
                 <div>
                   {String(user.avatar).length <= 0 ||
-                  user.avatar == null ? null : (
+                    user.avatar == null ? null : (
                     <label
                       className={styles.user_choose_photo}
                       onClick={() => removeImage()}

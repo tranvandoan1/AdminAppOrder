@@ -23,7 +23,7 @@ import { getAllTable } from "../features/TableSlice/TableSlice";
 import { getUser } from "../features/User/UserSlice";
 import { uploadLogin } from "../API/Users";
 import { Size } from "./../components/size";
-const { Header, Content, Footer, Sider } = Layout;
+const { Content,  Sider } = Layout;
 
 const LayoutAdmin = () => {
   const sizes = Size();
@@ -219,19 +219,7 @@ const LayoutAdmin = () => {
                       localStorage.setItem("key", JSON.stringify(["7"]));
                     },
                   },
-                  (tables?.value?.length <= 0 && tables?.checkData == false) ||
-                  (tables.value.length <= 0 && tables.checkData == true)
-                    ? null
-                    : {
-                        key: "8",
-                        icon: <RollbackOutlined />,
-                        label: "Quay lại Order",
-                        itemIcon: <NavLink to="/tables" />,
-                        style: { color: "black" },
-                        onClick: () => {
-                          localStorage.removeItem("key");
-                        },
-                      },
+          
                 ]}
               />
               <div

@@ -16,14 +16,14 @@ const Signin = () => {
     setLoading(true);
     try {
       const { data } = await UserAPI.signin(user);
-      if (data.user.accountType == 0) {
-        message.warning("Loại tài khoản không tương thích");
-      } else {
+      // if (data.user.accountType == 0) {
+      //   message.warning("Loại tài khoản không tương thích");
+      // } else {
         localStorage.setItem("user", JSON.stringify({ _id: data.user._id }));
         localStorage.setItem("token", JSON.stringify(data.token));
         alert("Mời bạn vào trang web");
         window.location.href = "/manager/table";
-      }
+      // }
       setLoading(false);
     } catch (error) {
       const errorLogin = error.response.data.error;
